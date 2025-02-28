@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydroTrack - Usage Statistics</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="dash_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            background-color: var(--clr-white);
+            border-radius: var(--card-border-radius);
+            padding: var(--card-padding);
+            margin-top: 1.4rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .chart-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--clr-primary);
+        }
+
+        .quality-chart-legend {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--clr-light);
+            border-radius: var(--border-radius-2);
+            color: #f44336;
+        }
+
+        .quality-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quality-legend-item .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .arrow-icon {
+            font-size: 1.5rem;
+            color: var(--clr-dark);
+        }
+
+        .scroll-bar {
+            height: 100vh;
+            /* Adjust this value as needed */
+            width: 168vh;
+            overflow-y: auto;
+            padding-right: 10px;
+            /* Prevent scrollbar overlap */
+            scrollbar-width: thin;
+            /* Optional for styling scrollbars */
+            scrollbar-color: var(--clr-primary) var(--clr-light);
+            /* Custom scrollbar colors */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!--aside section starts-->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>HydroTrack</h2>
+                </div>
+                <div class="menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <div class="close">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashboard.html">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="usage_statistics.html" class="active">
+                    <span class="material-symbols-outlined">bar_chart</span>
+                    <h3>Usage Trends</h3>
+                </a>
+                <a href="pro.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Profile-Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!--aside section ends-->
+
+        <!--main section starts-->
+        <main>
+            <div class="scroll-bar">
+                <h1>Usage Statistics</h1>
+
+                <!-- Water Level Chart -->
+                <div class="chart-container">
+                    <h2 class="chart-title">Weekly Water Level Trends</h2>
+                    <canvas id="water-level-chart"></canvas>
+                </div>
+
+                <!-- Water Quality Chart -->
+                <div class="chart-container">
+                    <h2 class="chart-title">Water Quality Analysis</h2>
+                    <canvas id="water-quality-chart"></canvas>
+
+                    <div class="quality-chart-legend">
+                        <div class="quality-legend-item">
+                            <div class="color-box" style="background-color: #4caf50;"></div>
+                            <span>Good (0-300 ppm)</span>
+                            <span class="material-symbols-outlined arrow-icon">arrow_downward</span>
+                        </div>
+                        <div class="quality-legend-item">
+                            <div class="color-box" style="background-color: #ff9800;"></div>
+                            <span>Moderate (300-600 ppm)</span>
+                            <span class="material-symbols-outlined arrow-icon">arrow_downward</span>
+                        </div>
+                        <div class="quality-legend-item">
+                            <div class="color-box" style="background-color: #f44336;"></div>
+                            <span>Not Fit (600+ ppm)</span>
+                            <span class="material-symbols-outlined arrow-icon">arrow_downward</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--main section ends-->
+
+        <!-- right section starts-->
+        <div class="right">
+            <div class="top">
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <!-- <div class="profile">
+                            <div class="profile-photo">
+                                <img src="person.png" alt="profile photo">
+                            </div>
+                        </div> -->
+            </div>
+        </div>
+        <!--right section ends -->
+    </div>
+
+    <script>
+        // Water Level Chart
+        const waterLevelCtx = document.getElementById('water-level-chart').getContext('2d');
+        new Chart(waterLevelCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Water Level (%)',
+                    data: [45, 60, 75, 55, 80, 65, 70],
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Water Quality Chart
+        const waterQualityCtx = document.getElementById('water-quality-chart').getContext('2d');
+        new Chart(waterQualityCtx, {
+            type: 'bar',
+            data: {
+                labels: ['1st Delivery', '2nd Delivery', '3rd Delivery', '4th Delivery', '5th Delivery'],
+                datasets: [{
+                    label: 'TDS (ppm)',
+                    data: [150, 280, 420, 550, 680],
+                    backgroundColor: [
+                        '#4caf50', // Good
+                        '#4caf50', // Good
+                        '#ff9800', // Moderate
+                        '#ff9800', // Moderate
+                        '#f44336'  // Not Fit
+                    ],
+                    borderColor: [
+                        '#388e3c', // Darker Green
+                        '#388e3c',
+                        '#f57c00', // Darker Orange
+                        '#f57c00',
+                        '#d32f2f'  // Darker Red
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="dash_script.js"></script>
+    <script src="theme.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydroTrack Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="dash_style.css">
+    <script defer src="dash_script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--aside section starts-->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>HydroTrack</h2>
+                </div>
+                <div class="menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <div class="close">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+            </div>
+            <!--top ends-->
+            <div class="sidebar">
+                <a href="dashhboard.html" class="active">
+                    <span class="material-symbols-outlined">
+                        grid_view
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="usg-sts.html">
+                    <span class="material-symbols-outlined">bar_chart</span>
+                    <h3>Usage Trends</h3>
+                </a>
+                <a href="pro.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Profile-Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!--aside section ends-->
+
+        <!--main section starts-->
+        <main>
+            <h1>HydroTrack Dashboard</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+            <!--Tank card of section-->
+            <div class="tank-card">
+                <div class="tank-card-header">
+                    <h2 id="tankNameSection">Tank Name</h2>
+                    <button id="editTankProfile" onclick="openEditTankModal()">Edit Tank Profile</button>
+                </div>
+                <!--Tank profile Popup-->
+                <!-- Modal Popup -->
+                <div id="editTankModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeEditTankModal()">&times;</span>
+                        <h2>Edit Tank Profile</h2>
+                        <form id="editTankForm" onsubmit="saveTankDetails(); return false;">
+                            <label for="tankName">Tank Name:</label>
+                            <input type="text" id="tankNameInput" placeholder="Enter tank name">
+
+                            <label for="tankHeight">Tank Height (In cm's):</label>
+                            <input type="number" id="tankHeightInput" placeholder="Enter the height">
+
+                            <label for="tankRadius">Tank Radius (centimeters):</label>
+                            <input type="number" id="tankRadiusInput" placeholder="Enter Radius">
+
+                            <button type="submit">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Insights section -->
+                <div class="insights">
+                    <!-- Water Level -->
+                    <div class="card-water-level">
+                        <span class="material-symbols-outlined">water_drop</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Water Level</h3>
+                                <h1 id="waterLevelText">50%</h1>
+                            </div>
+                            <div class="virtual-tank">
+                                <div class="tank">
+                                    <div class="water" id="waterFill"></div>
+                                </div>
+                            </div>
+                            <div class="circle">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                    <circle cx="40" cy="40" r="35" id="progressCircle"></circle>
+                                </svg>
+                                <div class="circle-number" id="circleNumber">50%</div>
+                            </div>
+                        </div>
+                        <small>Current water tank level</small>
+                    </div>
+                    <!-- Water Quality -->
+                    <div class="card-water-quality">
+                        <span class="material-symbols-outlined">science</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Water Quality</h3>
+                                <h1>Good</h1>
+                            </div>
+                            <div class="details">
+                                <p>TDS: 150 ppm</p>
+                                <p>pH: 7.2</p>
+                            </div>
+                        </div>
+                        <small>Based on real-time sensor data</small>
+                    </div>
+
+                    <!-- Water Volume -->
+                    <div class="card-water-volume">
+                        <span class="material-symbols-outlined">stacked_line_chart</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Water Volume</h3>
+                                <h1>320L</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Alerts section -->
+                    <div class="alerts">
+                        <h2>Alerts</h2>
+                        <ul>
+                            <li>Low water level detected!</li>
+                            <li>High TDS detected: Check water quality.</li>
+                            <div class="alert-banner"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--main section ends-->
+
+        <!--right section starts-->
+        <div class="right">
+            <div class="top">
+                <!-- <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button> -->
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <!-- <p><b>Profile</b></p> -->
+                        <small class="txt-muted"></small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="person.png" alt="profile photo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-section">
+                <div class="sec">
+                    <h1>Past Orders </h1>
+                </div>
+                <div class="update">
+                    <div class="updates">
+                        <div class="profile-photo">
+                            <img src="tanker.jpeg" alt="profile photo">
+                        </div>
+                        <div class="message">
+                            <p><b>You</b> recieved the water tanker</p>
+                        </div>
+                    </div>
+                    <div class="updates">
+                        <div class="profile-photo">
+                            <img src="tanker.jpeg" alt="profile photo">
+                        </div>
+                        <div class="message">
+                            <p><b>You</b> recieved the water tanker</p>
+                        </div>
+                    </div>
+                    <div class="updates">
+                        <div class="profile-photo">
+                            <img src="tanker.jpeg" alt="profile photo">
+                        </div>
+                        <div class="message">
+                            <p><b>You</b> recieved the water tanker</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Water Booking -->
+                <div class="water-booking">
+                    <h2>Book a Water Tanker</h2>
+                    <div class="tank-photo">
+                        <img src="tanker.jpeg" alt="water tanker photo">
+                        <p>Jagadamba Water Tanker</p>
+                    </div>
+                    <div class="tanker-info">
+                        <p>Capacity: 1000 L</p>
+                        <p>Price: 500 PKR</p>
+                    </div>
+                    <button id="book-btn">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--right section ends-->
+
+    </div>
+    <!--Container Ends-->
+
+    <script src="edit_tank.js"></script>
+    <script src="calculation.js"></script>
+    <script src="theme.js" defer></script>
+</body>
+
+</html>

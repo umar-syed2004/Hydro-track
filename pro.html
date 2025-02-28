@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydroTrack - Profile Settings</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="dash_style.css">
+    <script defer src="dash_script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!--aside section starts-->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2>HydroTrack</h2>
+                </div>
+                <div class="menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <div class="close">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+            <!--top ends-->
+            <div class="sidebar">
+                <a href="dashboard.html">
+                    <span class="material-symbols-outlined">
+                        grid_view
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="usg-sts.html">
+                    <span class="material-symbols-outlined">bar_chart</span>
+                    <h3>Usage Trends</h3>
+                </a>
+                <a href="profile.html" class="active">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Profile-Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!--aside section ends-->
+
+        <!--main section starts-->
+        <main>
+            <div class="scroll-box">
+                <h1>Profile Settings</h1>
+                <div class="profile-settings-container">
+                    <div class="profile-header">
+                        <div class="profile-photo">
+                            <img src="person.png" alt="Profile Picture">
+                            <input type="file" id="profilePictureUpload" accept="image/*" style="display: none;">
+                            <button onclick="document.getElementById('profilePictureUpload').click()">Change
+                                Picture</button>
+                        </div>
+                    </div>
+
+                    <form id="profileSettingsForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" placeholder="Enter your address"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waterUsageGoal">Monthly Water Usage Goal (Liters)</label>
+                            <input type="number" id="waterUsageGoal" name="waterUsageGoal"
+                                placeholder="Enter your monthly water usage goal">
+                        </div>
+
+                        <div class="password-section">
+                            <h3>Change Password</h3>
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" name="currentPassword"
+                                    placeholder="Enter current password">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" name="newPassword"
+                                    placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirm new password">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="save-button">Save Changes</button>
+                            <button type="button" class="cancel-button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <!--main section ends-->
+
+        <!-- right section starts-->
+        <!-- <div class="right">
+            <div class="top">
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div> -->
+                <!-- <div class="profile">
+                    <div class="profile-photo">
+                        <img src="person.png" alt="profile photo">
+                    </div>
+                </div> -->
+            </div>
+        </div> 
+        <!--right section ends -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileForm = document.getElementById('profileSettingsForm');
+            const cancelButton = document.querySelector('.cancel-button');
+
+            profileForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Here you would typically add code to save profile settings
+                alert('Profile settings saved!');
+            });
+
+            cancelButton.addEventListener('click', () => {
+                // Reset form or navigate back
+                profileForm.reset();
+            });
+        });
+    </script>    
+    <script src="theme.js" defer></script>
+</body>
+
+</html>

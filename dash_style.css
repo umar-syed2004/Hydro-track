@@ -1,0 +1,1209 @@
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* variables */
+
+:root {
+    --clr-primary: #007BFF; /* Updated to blue */
+    --clr-danger: #ff7782;
+    --clr-success: #41f1b6;
+    --clr-white: #fff;
+    --clr-info-dark: #7d8da1;
+    --clr-info-light: #dce1eb;
+    --clr-dark: #363949;
+    --clr-warning: #ff4edc;
+    --clr-light: rgba(132, 139, 200, 0.18);
+    --clr-primary-variant: #0056b3; /* Updated to darker blue */
+    --clr-dark-variant: #677483;
+    --clr-color-background: #f6f6f9;
+    --clr-h1: #053b8b;
+    --clr-h2: #2ad607;
+    --clr-small: #fa4b05;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    --box-shadow: 0 2rem 3rem var(--clr-light);
+}
+
+/* dark theme */
+.dark-theme-variables {
+    --clr-color-background: #181a1e;
+    --clr-white: #202528;
+    --clr-light: rgba(0, 0, 0, 0.4);
+    --clr-dark: #edeffd;
+    --clr-dark-variant: #677483;
+    --box-shadow: 0 2rem 3rem var(--clr-color-background);
+    --clr-h1: #27ecd2;
+    --clr-h2: #b9e619;
+    --clr-small: #05fa05;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: 0;
+    list-style: none;
+    appearance: none;
+}
+
+body {
+    font-family: 'Sour Gummy', cursive;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--clr-color-background);
+    font-size: 0.88rem;
+    user-select: none;
+    overflow: hidden;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 14rem;
+    margin: 0 auto;
+}
+
+a {
+    color: var(--clr-dark);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+
+.profile-photo img {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.text-muted {
+    color: var(--clr-text-dark);
+}
+
+p {
+    color: var(--clr-dark-variant);
+}
+
+b {
+    color: var(--clr-dark);
+}
+
+.primary {
+    color: var(--clr-primary);
+}
+
+.success {
+    color: var(--clr-success);
+}
+
+.danger {
+    color: var(--clr-danger);
+}
+
+.warning {
+    color: var(--clr-warning);
+}
+
+/* aside */
+
+aside {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 250px;
+    transition: width 0.5s ease, background 0.3s ease;
+    overflow: hidden;
+    height: 100vh;
+}
+
+aside .top {
+    background-color: var(--clr-primary);
+    color: var(black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.4rem;
+    padding: 1rem;
+    transition: padding 0.5s ease;
+}
+
+aside .logo {
+    display: flex;
+    gap: 1rem;
+}
+
+aside .top div.close span {
+    display: none;
+}
+
+/* sidebar */
+
+aside .sidebar {
+    background-color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    position: relative;
+    top: 1rem;
+    padding: 20px;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+aside h3 {
+    font-weight: 500;
+}
+
+aside .sidebar a {
+    display: flex;
+    color: var(--clr-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    height: 3.2rem;
+    transition: all .1s ease-in;
+    padding: 15px 10px;
+    transition: transform 0.3s ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all .1s ease-in;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    background-color: var(--clr-light);
+    color: var(--clr-primary);
+    margin-left: 0;
+    padding-left: 5px solid var(--clr-primary);
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background-color: var(--clr-primary);
+}
+
+aside .sidebar a:hover {
+    background-color: var(--clr-light);
+    color: var(--clr-primary);
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+    transition: all .4s;
+}
+
+aside.collapsed {
+    width: 60px; /* Sidebar collapses to this width */
+}
+
+aside.collapsed .top{
+    padding: 10px;  /*Aside padding when collapsed */
+    opacity: 1;
+    /* transform: scale(0); */
+    height: 60px;
+    width: 60px;
+}
+
+aside.collapsed .top .menu{
+    display: block;
+}
+
+aside.collapsed .top .logo{
+    display: none;
+}
+
+aside.collapsed .sidebar {
+    opacity: 0;     /* Make the sidebar items invisible when collapsed */
+    transform: translate(-50px);    /* Slide out the sidebar items */
+}
+
+aside .menu{
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000;
+}
+aside.collapsed{
+    display: 60px;
+}
+
+aside.collapsed .menu span.material-symbols-outlined{
+    font-size: 24px;
+    color: var(black);
+}
+
+aside.collapsed .sidebar a{
+    transform: translate(-30px);    /*Slide out the sidebar items */
+}
+
+aside.collapsed .sidebar h3{
+    display: none;
+}
+
+/* Sidebar icon remains visible when sidebar is collapsed */
+aside .sidebar span.material-symbols-outlined{
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+aside.collapsed .sidebar span.material-symbols-outlined{
+    margin-right: 0;
+}
+
+/* ************************
+--------Main Content---------
+************************* */
+
+main {
+    margin-top: 1.4rem;
+    width: auto;
+}
+
+main input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--clr-dark);
+}
+
+main .date {
+    display: inline-block;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+}
+
+main .insights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+}
+
+main .insights .card-water-level {
+    position: relative;
+    grid-column: 1/ -1;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+    /* width: 100%; */
+    /* height: auto; */
+}
+
+.card-water-level .middle{
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Space out the left, center, and right sections */
+    gap: 20px;
+    width: 100%;
+}
+
+/* Left Section (Text) */
+.card-water-level .left {
+    /* flex: 0 0 auto; */
+    text-align: left;
+    margin-right: auto; /*Push other items to right*/
+}
+
+/* Virtual Tank Structure */
+/* Virtual Tank (Center) */
+.virtual-tank {
+    width: 600px;
+    height: 200px;
+    border: 3px solid #ccc; /* Tank border */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: #f1f1f1; /* Background for empty tank */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Water inside the tank */
+.virtual-tank .water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0; /* Starts empty */
+    background: linear-gradient(180deg, #04d3ee, #0540e2); /* Water gradient */
+    transition: height 1s ease-in-out; /* Smooth animation */
+    border-radius: 0 0 5px 5px; /* Rounded bottom corners for water */
+}
+
+/* Right Section (Circular Water Level Display) */
+.circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.circle svg {
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg); /* Rotate to make progress start from top */
+}
+
+.circle circle {
+    fill: none;
+    stroke: #ccc; /* Background circle color */
+    stroke-width: 8;
+    cx: 40;
+    cy: 40;
+    r: 35;
+}
+
+.circle #progressCircle {
+    stroke: #4caf50; /* Progress circle color */
+    stroke-width: 8;
+    stroke-dasharray: 220; /* Circumference of the circle */
+    stroke-dashoffset: 220; /* Start with no progress */
+    transition: stroke-dashoffset 1s ease-in-out; /* Smooth animation */
+}
+
+.circle .circle-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main .insights .card-water-quality {
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+}
+
+main .insights .card-water-volume {
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+}
+
+.card-water-level .progress{
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg); /* Rotate for top-down animation */
+}
+
+.card-water-level .progress circle {
+    fill: none;
+    stroke-width: 6;
+    stroke: #ccc; /* Background stroke color */
+}
+
+.card-water-level .progress circle:nth-child(1) {
+    stroke: #4caf50; /* Progress color */
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in-out; /* Smooth animation */
+}
+
+/* Add animation class */
+.card-water-level .progress.animate-tank circle:nth-child(1) {
+    animation: fillTank 1s forwards;
+}
+
+@keyframes fillTank {
+    from {
+        stroke-dashoffset: calc(2 * 3.14 * 30); /* Initial offset */
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/******************************
+*   ALERTFUL STYLES
+******************************/
+
+.alert-danger{
+    background-color: rgba(255, 77, 77, 0.8); /* Light red */
+    color: white;
+    animation: blink 1s infinite; /* Blinking effect */
+}
+
+/* Blinking effect */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Highlighted water-level section */
+/* Highlighted water-level section with spreading red shadow */
+.card-water-level.alert-danger {
+    border: 2px solid red;
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.8), 0 0 30px 10px rgba(255, 0, 0, 0.6);
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+@keyframes pulseShadow {
+    0% {
+        box-shadow: 0 0 5px 5px rgba(255, 0, 0, 0.8), 0 0 30px 10px rgba(255, 0, 0, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 25px 10px rgba(255, 0, 0, 1), 0 0 35px 15px rgba(255, 0, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.8), 0 0 30px 10px rgba(255, 0, 0, 0.6);
+    }
+}
+
+/* Apply pulsating shadow */
+.card-water-level.alert-danger {
+    border: 2px solid red;
+    animation: pulseShadow 1s infinite;
+}
+
+/* Alert banner */
+.alert-banner {
+    background-color: rgba(255, 77, 77, 0.9);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+
+.card-water-level.danger {
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.1);
+    animation: pulse 1s infinite; /* Subtle pulsing effect */
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+}
+
+/* Water Quality Icons Styling */
+.card-water-quality span.material-symbols-outlined {
+    font-size: 3em;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Water Volume Font */
+.card-water-volume .left h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+main .insights>div:hover {
+    box-shadow: none;
+}
+
+main .insights>div span {
+    background: var(--clr-primary); /* Updated to blue */
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--clr-white);
+    font-size: 2rem;
+}
+
+main .insights>div.expenses span {
+    background: var(--clr-danger);
+}
+
+main .insights>div.income span {
+    background: var(--clr-success);
+}
+
+main .insights>div .middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .insights>div .middle h1 {
+    font-size: 1.6rem;
+}
+
+main h1 {
+    color: var(--clr-dark);
+}
+
+main .insights h1 {
+    color: var(--clr-dark);
+}
+
+main .insights h3 {
+    color: var(--clr-dark);
+}
+
+main .insights p {
+    color: var(--clr-dark);
+}
+
+main .insights .progress {
+    position: relative;
+    height: 68px;
+    width: 68px;
+    border-radius: 50px;
+}
+
+main .insights svg {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    /* top: 0%; */
+}
+
+main .insights svg circle {
+    fill: none;
+    stroke: var(--clr-primary); /* Updated to blue */
+    transform: rotate(270, 80, 80);
+    stroke-width: 5;
+}
+
+main .insights .sales svg circle {
+    stroke-dashoffset: 10;
+    stroke-dasharray: 150;
+}
+
+main .insights .progress .number {
+    position: absolute;
+    top: 5%;
+    left: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .insights-adj{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+main .insights .alerts{
+    position: relative;
+    grid-column: 1/ -1;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+    /* width: 100%; */
+    /* height: auto; */
+}
+
+main .insights .alerts h2{
+    font-size: xx-large;
+    color: var(--clr-h2);
+}
+
+main .insights small{
+    font-size: large;
+    color: var(--clr-small);
+}
+
+main.alertful {
+    background-color: rgba(255, 200, 200, 0.2);
+    border: 2px solid red;
+    animation: flicker 1.5s infinite; /* Flicker effect */
+}
+
+@keyframes flicker {
+    0%, 100% {
+        box-shadow: 100 0 100px rgba(255, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+}
+/*****************************
+*   TANK PROFILE
+*****************************/
+
+.tank-card{
+    background-color: var(--clr-light);
+    border-radius: var(--card-border-radius);
+    padding: 1.6rem;
+    margin-top: 1.4rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.tank-card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid var(--clr-light);
+}
+
+.tank-card-header{
+    padding: 0.6rem 1.2rem;
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+    border-radius: var(--border-radius-2);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.tank-card-header button:hover{
+    background-color: var(--clr-primary-variant);
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: var(--clr-white);
+    padding: 2rem;
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: var(--clr-dark);
+}
+
+.modal-content input {
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border: 1px solid var(--clr-info-light);
+    border-radius: var(--border-radius-1);
+    font-size: 1rem;
+    color: var(--clr-dark);
+}
+
+.modal-content button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--border-radius-1);
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: var(--clr-primary-variant);
+}
+
+/* Close Button */
+.modal-content .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--clr-danger);
+}
+
+body.modal-open {
+    overflow: hidden; /* Disable scrolling when modal is open */
+}
+
+
+/*****************************
+*   RIGHT SECTION
+*****************************/
+
+.right{
+    margin-top: 1.4rem;
+}
+
+.right .top{
+    display: flex;
+    justify-content: start;
+    gap: 2rem;
+}
+
+.right .theme-toggler{
+    background-color: var(--clr-white);
+    display: flex;
+    justify-content: space-between;
+    height: 2.2rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+}
+
+.right .theme-toggler span{
+    font-size: 1.2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .theme-toggler span.active{
+    background-color: var(--clr-primary);
+    color: white;
+}
+
+.right .top .profile .profile-photo{
+    display: flex;
+    gap: 2rem;
+    margin-left: 8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* background-color: var(--clr-info-dark); */
+}
+
+/*past order*/
+.right .book-section .update{
+    background-color: var(--clr-color-background);
+    padding: 10px;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease-in-out;
+    width: 110%;
+    margin-top: 1rem;
+}
+
+.right .book-section .update:hover{
+transform: scale(1.15);
+}
+
+.book-section{
+    margin-top: 0.5rem;
+}
+
+.book-section h1{
+    color: var(--clr-h1);
+    font-size: 40px;
+}
+
+.book-section .sec{
+    width: 110%;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.water-booking h2{
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    color: var(--clr-h2);
+}
+
+.water-booking .tank-photo{
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    width: 100%;
+}
+
+.water-booking .tank-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.water-booking .tank-photo img:hover{
+    transform: scale(1.05);
+}
+
+
+.water-booking .tank-photo p{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(90, 9, 241);
+    color: white;
+}
+
+.water-booking .tanker-info{
+    margin-bottom: 30px;
+    align-items: center;
+    text-align: center;
+    font-size: x-large;
+}
+
+.water-booking button{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(82, 6, 223);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.water-booking button:hover{
+background-color: rgb(4, 104, 4);
+color: white;
+transform: scale(1.05);
+}
+
+/*****************************
+*   PROFILE PAGE
+******************************/
+
+/* Profile Settings Styles */
+.profile-settings-container {
+    background-color: var(--clr-white);
+    border-radius: var(--card-border-radius);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    margin-top: 1.4rem;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-settings-container .profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--clr-primary);
+}
+
+.profile-photo button {
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-photo button:hover {
+    background-color: var(--clr-primary-variant);
+}
+
+.profile-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--clr-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--clr-info-light);
+    border-radius: var(--border-radius-1);
+    font-size: 1rem;
+    color: var(--clr-dark);
+}
+
+.password-section {
+    background-color: var(--clr-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-2);
+    margin-top: 1rem;
+}
+
+.password-section h3 {
+    margin-bottom: 1rem;
+    color: var(--clr-dark);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.save-button,
+.cancel-button {
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--border-radius-1);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button {
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+    border: none;
+}
+
+.cancel-button {
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
+    border: 1px solid var(--clr-info-light);
+}
+
+.save-button:hover {
+    background-color: var(--clr-primary-variant);
+}
+
+.cancel-button:hover {
+    background-color: var(--clr-info-light);
+}
+
+/* @media screen and (max-width: 768px) {
+    .profile-settings-container {
+        padding: 1rem;
+    }
+
+    .profile-photo img {
+        width: 100px;
+        height: 100px;
+    }
+} */
+
+/* Profile Dropdown Styles */
+.profile-photo {
+    position: relative;
+}
+
+.profile-photo:hover{
+    cursor: pointer;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the profile photo */
+    right: 0;
+    width: 250px;
+    background-color: var(--clr-white);
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.profile-dropdown .user-details {
+    margin-bottom: 1rem;
+}
+
+.profile-dropdown .user-details h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--clr-primary);
+}
+
+.profile-dropdown .user-details p {
+    margin: 0.3rem 0;
+    color: var(--clr-dark);
+}
+
+.profile-dropdown #edit-profile-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+    border: none;
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-dropdown #edit-profile-btn:hover {
+    background-color: var(--clr-primary-variant);
+}
+
+.scroll-box {
+    width: 120%;
+    height: 70%;
+    overflow: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/*****************************
+*   RESPONSIVE DESIGN
+*****************************/
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 94%;
+        grid-template-columns: 7rem auto 14rem;
+    }
+
+    aside .sidebar h3 {
+        display: none;
+    }
+
+    aside .sidebar a:last-child {
+        position: relative;
+        margin-top: 1.8rem;
+    }
+
+    main .insights {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    aside {
+        position: fixed;
+        width: 18rem;
+        z-index: 3;
+        background: var(--clr-white);
+    }
+
+    aside .logo h2 {
+        display: inline;
+    }
+
+    aside .sidebar h3 {
+        display: inline;
+    }
+
+    aside .sidebar a {
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .top div.close span {
+        display: inline;
+        position: absolute;
+        right: 0;
+        margin-left: -30px;
+        font-size: 35px;
+        cursor: pointer;
+    }
+
+    .card-water-level .middle {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .virtual-tank {
+        width: 80px;
+        height: 160px;
+    }
+    
+    .circle {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+

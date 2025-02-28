@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --water-light-blue: #87CEEB;
+            --water-deep-blue: #1E90FF;
+            --water-transparent-blue: rgba(135, 206, 235, 0.6);
+            --water-highlight: rgba(255, 255, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--water-light-blue), var(--water-deep-blue));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(145deg, var(--water-transparent-blue), rgba(30, 144, 255, 0.4));
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--water-highlight);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .image-upload {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--water-deep-blue);
+            color: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+
+        .profile-details {
+            margin-left: 20px;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile-username {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .settings-section {
+            background: var(--water-highlight);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--water-deep-blue);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            color: white;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--water-deep-blue);
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: var(--water-deep-blue);
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .save-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, var(--water-light-blue), var(--water-deep-blue));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .save-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .notification-label {
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .profile-container {
+                padding: 15px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-details {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <img src="/api/placeholder/100/100" alt="Profile" class="profile-image">
+                <div class="image-upload">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            <div class="profile-details">
+                <div class="profile-name">John Doe</div>
+                <div class="profile-username">@johndoe</div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="section-title">
+                <i class="fas fa-user"></i>
+                Personal Information
+            </div>
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" value="John Doe">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-input" value="johndoe">
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="section-title">
+                <i class="fas fa-envelope"></i>
+                Contact Information
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" value="john.doe@example.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Location</label>
+                <select class="form-input">
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>United Kingdom</option>
+                    <option>Australia</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <div class="section-title">
+                <i class="fas fa-bell"></i>
+                Notification Preferences
+            </div>
+            <div class="notification-item">
+                <span class="notification-label">Email Notifications</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="notification-item">
+                <span class="notification-label">Push Notifications</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="notification-item">
+                <span class="notification-label">Marketing Emails</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <button class="save-button">Save Changes</button>
+    </div>
+
+    <script>
+        // Profile Settings Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageUpload = document.querySelector('.image-upload');
+            const saveButton = document.querySelector('.save-button');
+
+            imageUpload.addEventListener('click', () => {
+                alert('Image upload functionality to be implemented');
+            });
+
+            saveButton.addEventListener('click', () => {
+                // Collect form data
+                const fullName = document.querySelector('input[value="John Doe"]').value;
+                const username = document.querySelector('input[value="johndoe"]').value;
+                const email = document.querySelector('input[value="john.doe@example.com"]').value;
+                const location = document.querySelector('select').value;
+
+                // Collect notification preferences
+                const notifications = {
+                    email: document.querySelectorAll('.toggle-switch input')[0].checked,
+                    push: document.querySelectorAll('.toggle-switch input')[1].checked,
+                    marketing: document.querySelectorAll('.toggle-switch input')[2].checked
+                };
+
+                // Prepare data object
+                const profileData = {
+                    fullName,
+                    username,
+                    email,
+                    location,
+                    notifications
+                };
+
+                // Simulated save functionality (replace with actual backend call)
+                console.log('Saving profile data:', profileData);
+                alert('Profile updated successfully!');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydro-Track (Great Tracking System)</title>
+    <!--Linking Font Awesome for icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="land_style.css">
+    <script src="firebase_auth.js" defer type="module"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="land_pg.html" class="nav-logo">
+                <!-- <h2 class="logo-text">Hydro-Track</h2> -->
+                <img src="logo-5.png" alt="Logo" class="logo" id="navbar-logo">
+            </a>
+            <ul class="nav-menu">
+                <button id="menu-close-button" class="fas fa-times"></button>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">Menu</a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="#" class="nav-link">Gallery</a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <!-- <button id="menu-open-button" class="fas fa-bars"></button> -->
+            <!-- New login/signup buttons -->
+            <div class="auth-buttons">
+                <button id="signup-btn" class="nav-button signup-btn">Sign Up</button>
+                <button id="login-btn" class="nav-button login-btn">Login</button>
+            </div>
+            <button id="menu-open-button" class="fas fa-bars"></button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- <script type="module">
+
+            // Import the functions you need from the SDKs you need
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+
+            // TODO: Add SDKs for Firebase products that you want to use
+
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+            // Your web app's Firebase configuration
+
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+            const firebaseConfig = {
+
+                apiKey: "AIzaSyBUjKbwCKIWzCN1towa8B0j4PBMl2vCWaI",
+
+                authDomain: "hydro-track-d3b49.firebaseapp.com",
+
+                projectId: "hydro-track-d3b49",
+
+                storageBucket: "hydro-track-d3b49.firebasestorage.app",
+
+                messagingSenderId: "232322560115",
+
+                appId: "1:232322560115:web:6a1e2d4c74dfbe32ebba06",
+
+                measurementId: "G-1P058XRL5V"
+
+            };
+
+
+            // Initialize Firebase
+
+            const app = initializeApp(firebaseConfig);
+
+            const analytics = getAnalytics(app);
+
+        </script> -->
+
+
+
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="water.mp4" type="video/mp4">
+        </video>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="section-content">
+                <div class="hero-details">
+                    <h2 class="title">Hydro-Track</h2>
+                    <h3 class="subtitle">Track Your Water Usage with Ease....</h3>
+                    <p class="description"><b>"Our water monitoring system helps you track water levels, predict usage,
+                            and ensure the quality of your water for safe consumption."</b><br>
+                        Simplify your water management with real-time monitoring, alerts for low levels, water usage
+                        insights, and quality analysis. <br>Effortlessly track and optimize your household water
+                        consumption with our IoT-powered solution, designed to ensure sustainability and convenience at
+                        your fingertips. </p>
+
+                    <div class="buttons">
+                        <!-- <a href="#" class="button order-now">Order Now</a> -->
+                        <a href="#contact" class="button contact-us">Contact-Us</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="hero-pic.jpg" alt="Hero" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <!--About Section-->
+        <section class="about-section" id="about">
+            <div class="section-content">
+                <div class="fade-in fade-in-left">
+                    <div class="about-image-wrapper">
+                        <img src="about-pic.jpeg" alt="About" class="about-image">
+                    </div>
+                </div>
+                <div class="about-details">
+                    <div class="fade-in">
+                        <h2 class="section-title">About Us</h2>
+                    </div>
+                    <div class="fade-in fade-in-right">
+                        <p class="about-description">At Hydro-Track, we are redefining the way households manage
+                            their most precious resource—water. With a vision to promote water conservation and smarter
+                            living, we’ve developed a comprehensive <b>Smart Water Monitoring System</b> that integrates
+                            advanced
+                            <i>IoT technology</i> and an intuitive interface. <br> <br>
+
+                            Our system empowers you to:<br><br>
+
+                            Monitor water levels in real-time, ensuring you never run out unexpectedly.<br>
+                            Assess water quality, helping you determine if it’s safe for drinking or other uses.<br>
+                            Track water consumption trends, giving you insights into your usage patterns over time.<br>
+                            Receive timely alerts, so you can take action before water shortages occur.<br>
+                            Easily book water tankers, providing a hassle-free solution to meet your needs.<br> <br>
+
+                            Beyond functionality, we’re committed to sustainability. By enabling households to manage
+                            water
+                            more efficiently, we aim to reduce waste and contribute to global water conservation
+                            efforts.<br><br>
+
+                            Founded on innovation and driven by a passion for smarter living, [Your Product Name] brings
+                            together technology and simplicity to make water management effortless for everyone.<br><br>
+
+                            <center><b><i>" Together, let’s embrace technology to secure a sustainable future. "</i></b>
+                            </center>
+                        </p>
+                    </div>
+                    <div class="fade-in fade-in-right">
+                        <div class="social-link-list">
+                            <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Testimonial section-->
+        <!-- Testimonials Section -->
+        <section class="testimonals-section" id="testimonials">
+            <div class="fade-in fade-in-left">
+                <h2 class="section-title">Testimonials</h2>
+            </div>
+            <div class="section-content">
+                <div class="fade-in fade-in-right">
+                    <div class="slider-container swiper">
+                        <div class="swiper-wrapper">
+                            <div class="testimonial swiper-slide">
+                                <img src="user1.jpg" alt="User" class="user-image">
+                                <h3 class="name">Sarah Johnson</h3>
+                                <i class="feedback">"Hydro-Track has completely transformed the way I manage water usage in my home. It's so easy to track levels, and I love the alerts when water is running low. The water quality monitor gives me peace of mind. Highly recommend this system for any household!"</i>
+                            </div>
+                            <div class="testimonial swiper-slide">
+                                <img src="user2.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Ashutosh Kumar</h3>
+                                <i class="feedback">"I've been using Hydro-Track for a few months now, and it has been incredibly helpful. The real-time water usage insights have made me more conscious of how much water we use. It’s amazing how simple it is to monitor everything from one app. Fantastic product!"</i>
+                            </div>
+                            <div class="testimonial swiper-slide">
+                                <img src="user3.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Venkatesh waran</h3>
+                                <i class="feedback">"As someone who’s always been cautious about water conservation, Hydro-Track has been an essential tool in my home. The water tanker booking feature is a life-saver, and I know when to take action before it's too late. It really helps with sustainability."</i>
+                            </div>
+                            <div class="testimonial swiper-slide">
+                                <img src="user4.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Mahima Bhattacharya</h3>
+                                <i class="feedback">"Hydro-Track is not only easy to use, but it also helps me monitor water levels in real-time, which was something I never thought was possible before. The accuracy is impressive, and the system has prevented a few water shortages already!"</i>
+                            </div>
+                            <div class="testimonial swiper-slide">
+                                <img src="user5.jpeg" alt="User" class="user-image">
+                                <h3 class="name">David Cooper</h3>
+                                <i class="feedback"> "What I love most about Hydro-Track is the water quality assessment. It instantly checks the water quality and lets me know if it’s safe for consumption. It’s been a game-changer for my family, especially during the summer months when water quality is more of a concern."</i>
+                            </div>
+                            <div class="testimonial swiper-slide">
+                                <img src="user6.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Alisha Rose</h3>
+                                <i class="feedback">"The Hydro-Track system is a must-have for any modern home. Not only does it provide real-time data, but it also offers detailed insights into how I can reduce my water consumption. I feel like I’m doing my part for the environment and saving money at the same time."</i>
+                            </div>
+                            <div class="testimonial swiper-slide">
+                                <img src="user7.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Ananth Nagmani</h3>
+                                <i class="feedback">"I never realized how much water we were wasting until I started using Hydro-Track. Now, I can track my water usage trends and make adjustments where needed. It’s like having a personal water conservation expert at home!"</i>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Add Pagination and Navigation -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-slide-button swiper-button-prev"></div>
+                    <div class="swiper-slide-button swiper-button-next"></div>
+                </div>
+        </section>
+
+        <!--Contacts section-->
+        <section class="contact-section" id="contact">
+            <div class="fade-in">
+                <h2 class="section-title">Contact US</h2>
+            </div>
+            <div class="section-content">
+                <div class="fade-in fade-in-left">
+                    <ul class="contact-info-list">
+                        <li class="contact-info">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            <p>123 Campsite Avenue, Wilderness, CA 98765</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-regular fa-envelope"></i>
+                            <p>info@coffeeshopwebsite.com</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-solid fa-phone"></i>
+                            <p>(123) 456-78909</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>Monday - Friday: 9.00 AM - 5.00 PM</p>
+                        </li>
+                        <li class="contact-info">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>Sunday: Closed</p>
+                        </li>
+
+                        <li class="contact-info">
+                            <i class="fa-solid fa-globe"></i>
+                            <p>www.codingldgkh.com</p>
+                        </li>
+                </div>
+
+                </ul>
+                <div class="fade-in fade-in-right">
+                    <form action="#" class="contact-form">
+                        <input type="text" placeholder="Your name" class="form-input" required>
+                        <input type="email" placeholder="Your email" class="form-input" required>
+                        <textarea placeholder="Your message" class="form-input" required></textarea>
+                        <button class="submit-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Modal -->
+        <div id="signup-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="First Name" id="first-name" required>
+                        <input type="text" placeholder="Last Name" id="last-name" required>
+                    </div>
+                    <input type="email" placeholder="Email" id="signup-email" required>
+                    <input type="password" placeholder="Password" id="signup-password" required>
+                    <div class="terms-container">
+                        <input type="checkbox" id="terms-checkbox" required>
+                        <label for="terms-checkbox">I accept the Terms and Conditions</label>
+                    </div>
+                    <button type="submit" class="submit-button">Sign Up</button>
+                    <p class="switch-form">Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input type="email" placeholder="Email" id="login-email" required>
+                    <input type="password" placeholder="Password" id="login-password" required>
+                    <button type="submit" class="submit-button">Login</button>
+                    <div class="social-login">
+                        <p>Or login with:</p>
+                        <div class="social-buttons">
+                            <button id="google-btn" type="g-button" class="google-btn">
+                                <i class="fab fa-google"></i> Google
+                            </button>
+                            <button type="f-button" class="social-btn face-btn">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </button>
+                            <button type="x-button" class="social-btn x-btn">
+                                <i class="fab fa-x-twitter"></i> X
+                            </button>
+                        </div>
+                    </div>
+                    <p class="switch-form">Don't have an account? <a href="#" id="switch-to-signup">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!--Footer section-->
+        <footer class="footer-section">
+            <div class="section-content">
+                <p class="copyright-text">0 2024 coffee shop</p>
+
+                <div class="social-link-list">
+                    <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+
+                <p class="policy-text">
+                    <a href="#" class="policy-link">Privacy Policy</a>
+                    <span class="separator">.</span>
+                    <a href="#" class="policy-link">Refund Policy</a>
+
+                </p>
+            </div>
+        </footer>
+    </main>
+    <!--Linking Swiper script-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!--Linking Custom script-->
+    <script src="land_script.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js"></script>
+
+    <script>
+        import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+        const auth = getAuth();
+        const googleProvider = new GoogleAuthProvider();
+
+        document.querySelector('.google-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            signInWithPopup(auth, googleProvider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log("User signed in:", user);
+                    window.location.href = '/dashboard.html';
+                })
+                .catch((error) => {
+                    console.error("Error during sign-in:", error);
+                });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-in");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+
+</body>
+
+</html>
